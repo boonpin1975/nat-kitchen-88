@@ -31,16 +31,23 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--dark-bg);
   color: var(--text-main);
   line-height: 1.6;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   overflow-x: hidden;
   background: radial-gradient(circle at 50% 0%, #2A170F 0%, #0F0A07 70%);
   min-height: 100vh;
+  position: relative;
+}
+
+body.menu-open {
+  overflow: hidden;
 }
 
 /* Utility Containers */
@@ -275,18 +282,153 @@ h1, h2, h3, h4 {
 
 .mobile-toggle {
   display: none;
-  background: none;
-  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(230, 161, 0, 0.3);
+  border-radius: var(--radius-sm);
   cursor: pointer;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  transition: var(--transition);
 }
 
-.mobile-toggle span {
-  width: 24px;
+.mobile-toggle:hover, .mobile-toggle:focus {
+  background: rgba(230, 161, 0, 0.2);
+  border-color: var(--primary-gold-bright);
+}
+
+.mobile-toggle .hamburger-bar {
+  width: 22px;
   height: 2px;
   background-color: var(--text-main);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+.mobile-toggle.active .hamburger-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-toggle.active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle.active .hamburger-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile Navigation Header & Actions inside Drawer */
+.mobile-nav-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(230, 161, 0, 0.2);
+  margin-bottom: 1rem;
+}
+
+.mobile-nav-title {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--primary-gold-bright);
+  letter-spacing: 1px;
+}
+
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.mobile-drawer-actions {
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(230, 161, 0, 0.2);
+}
+
+.btn-whatsapp-drawer {
+  background: #25D366;
+  color: #FFF;
+}
+
+.btn-whatsapp-drawer:hover {
+  background: #1EBE5D;
+}
+
+/* Mobile Navigation Backdrop Overlay */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-nav-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile Fixed Bottom Quick-Action Bar */
+.mobile-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background: rgba(15, 10, 7, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(230, 161, 0, 0.3);
+  padding: 0.75rem 1rem;
+  gap: 0.75rem;
+  box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.6);
+}
+
+.mobile-bottom-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  min-height: 44px;
+  text-align: center;
   transition: var(--transition);
+}
+
+.btn-whatsapp-bar {
+  background: linear-gradient(135deg, #25D366 0%, #1EBE5D 100%);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-map-bar {
+  background: linear-gradient(135deg, var(--primary-gold-bright) 0%, var(--primary-gold) 100%);
+  color: #120E0B;
+  box-shadow: 0 4px 12px rgba(230, 161, 0, 0.3);
 }
 
 /* ==========================================================================
@@ -336,7 +478,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-title {
-  font-size: 3.4rem;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
   margin-bottom: 1.2rem;
   font-weight: 800;
 }
@@ -477,7 +619,7 @@ h1, h2, h3, h4 {
 }
 
 .section-title {
-  font-size: 2.4rem;
+  font-size: clamp(1.65rem, 4vw, 2.4rem);
   margin-bottom: 0.75rem;
 }
 
@@ -741,11 +883,15 @@ h1, h2, h3, h4 {
    RESPONSIVE DESIGN (TABLETS & MOBILE)
    ========================================================================== */
 @media (max-width: 1024px) {
+  .container {
+    width: 92%;
+  }
   .hero-grid, .freshness-grid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
   .reviews-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
   .quick-stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -756,36 +902,218 @@ h1, h2, h3, h4 {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 72px;
+  }
+
+  .site-header {
+    padding: 0.6rem 0;
+  }
+
   .header-logo-img {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
+    border-width: 2px;
   }
-  .hero-badge-logo {
-    width: 76px;
-    height: 76px;
+
+  .brand-name {
+    font-size: 1.15rem;
+    letter-spacing: 0.5px;
   }
-  .main-nav {
+
+  .brand-tagline {
+    font-size: 0.75rem;
+  }
+
+  .header-btn {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: #120E0B;
-    flex-direction: column;
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--primary-gold);
   }
-  .main-nav.active {
-    display: flex;
-  }
+
   .mobile-toggle {
     display: flex;
   }
-  .hero-title {
-    font-size: 2.2rem;
+
+  .mobile-bottom-bar {
+    display: flex;
   }
+
+  .mobile-nav-header {
+    display: flex;
+  }
+
+  .mobile-drawer-actions {
+    display: flex;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 85%;
+    max-width: 320px;
+    background: rgba(18, 14, 11, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 999;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-left: 1px solid var(--dark-card-border);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+  }
+
+  .main-nav.active {
+    transform: translateX(0);
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .hero-section {
+    padding: 2.2rem 0 3.5rem 0;
+  }
+
+  .hero-logo-badge {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .hero-badge-logo {
+    width: 64px;
+    height: 64px;
+    border-width: 2px;
+  }
+
+  .hero-badge-info {
+    font-size: 0.82rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.85rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .image-badge {
+    position: relative;
+    inset: auto;
+    margin-top: 1rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .store-single-card {
+    padding: 1.5rem;
+  }
+
+  .store-header-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .store-logo-img {
+    width: 64px;
+    height: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 94%;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .brand-tagline {
+    display: none;
+  }
+
   .hero-logo-badge {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .quick-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .stat-card {
+    padding: 0.6rem 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .stat-icon {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.65rem;
+  }
+
+  .stat-val {
+    font-size: 0.85rem;
+  }
+
+  .feature-item {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .feature-icon {
+    font-size: 1.8rem;
+  }
+
+  .review-card {
+    padding: 1.25rem;
+  }
+
+  .store-single-card {
+    padding: 1.25rem;
+  }
+
+  .map-embed-wrapper iframe {
+    height: 250px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-brand {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
   }
 }

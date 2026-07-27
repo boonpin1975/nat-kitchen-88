@@ -30,20 +30,35 @@
         </div>
       </a>
 
-      <nav class="main-nav" id="main-nav">
+      <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">&times;</button>
+        </div>
+        <a href="#hero" class="nav-link">Home</a>
         <a href="#freshness" class="nav-link">Why So Fresh?</a>
         <a href="#reviews" class="nav-link">Customer Reviews</a>
         <a href="#location" class="nav-link">Visit Store</a>
+        <div class="mobile-drawer-actions">
+          <a href="https://wa.me/60164852953?text=Hello%20Nat%20Curry%20Puff!%20I%20would%20like%20to%20inquire%20about%20visiting%20your%20Balik%20Pulau%20shop." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-drawer">
+            <span>💬 WhatsApp (0164852953)</span>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=No+8+Lebuh+Sri+Genting+8+Taman+Nyaman+Indah+11000+Balik+Pulau+Penang" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+            <span>📍 Google Maps Directions</span>
+          </a>
+        </div>
       </nav>
 
       <div class="header-actions">
         <a href="#location" class="btn btn-gold header-btn">
           <span>📍 Visit Store</span>
         </a>
-        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
         </button>
       </div>
     </div>
@@ -308,7 +323,15 @@
         &copy; 2026 Nat Home Made Curry Puff @ Balik Pulau. Contact: 0164852953. All rights reserved.
       </div>
     </div>
-  </footer>
+  <!-- Fixed Bottom Quick-Action Bar for Mobile Devices -->
+  <div class="mobile-bottom-bar" id="mobile-bottom-bar">
+    <a href="https://wa.me/60164852953?text=Hello%20Nat%20Curry%20Puff!%20I%20would%20like%20to%20inquire%20about%20visiting%20your%20Balik%20Pulau%20shop." target="_blank" rel="noopener noreferrer" class="mobile-bottom-btn btn-whatsapp-bar">
+      <span>💬 WhatsApp Us</span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=No+8+Lebuh+Sri+Genting+8+Taman+Nyaman+Indah+11000+Balik+Pulau+Penang" target="_blank" rel="noopener noreferrer" class="mobile-bottom-btn btn-map-bar">
+      <span>📍 Directions</span>
+    </a>
+  </div>
 
   <script type="module" src="./main.js"></script>
 </body>
