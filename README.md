@@ -29,36 +29,43 @@ Visit our kitchen in Balik Pulau, Penang to taste fresh, piping hot curry puffs 
 
 ---
 
-## 🛠️ Technology Stack
+## 🐳 Running with Docker & Docker Compose
 
-- **Frontend**: HTML5, Vanilla CSS3 (Custom Design System & Glassmorphism UI), JavaScript (ES Modules).
-- **Build Tool / Dev Server**: [Vite](https://vitejs.dev/)
+You can easily run the application in a lightweight containerized environment using Docker:
+
+### Using Docker Compose (Recommended)
+```bash
+# Build and start container in detached mode
+docker compose up -d
+
+# Stop container
+docker compose down
+```
+Access the application at `http://localhost:8080/`.
+
+### Using Docker CLI
+```bash
+# Build image
+docker build -t nat-kitchen-web .
+
+# Run container
+docker run -d -p 8080:80 --name nat_kitchen_88 nat-kitchen-web
+```
 
 ---
 
-## 🚀 How to Run Locally
+## 🛠️ Local Node.js Development
 
-1. **Clone the Repository**:
-   ```bash
-   git clone https://github.com/boonpin1975/nat-kitchen-88.git
-   cd nat-kitchen-88
-   ```
+```bash
+# Install dependencies
+npm install
 
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+# Start local dev server
+npm run dev
 
-3. **Start Local Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open `http://localhost:5173/` in your browser.
-
-4. **Build Production Bundle**:
-   ```bash
-   npm run build
-   ```
+# Build production bundle
+npm run build
+```
 
 ---
 
