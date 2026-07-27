@@ -19,6 +19,18 @@ In the scenic town of Balik Pulau on Penang Island, we craft traditional **Karip
 
 ---
 
+## 📱 Mobile-First Responsive Web Design
+
+This website is engineered with a **Mobile-First UX Strategy**, ensuring fast performance, high customer conversion, and a premium interactive experience across all mobile smartphones, tablets, and desktop screens.
+
+### Mobile UX & Layout Features:
+- 📱 **Glassmorphism Side Drawer Navigation**: Features a sleek glassmorphism slide-in drawer menu, an animated hamburger icon that morphs to an **"X"** cross when active, outside-tap backdrop dismissal, and body scroll lock.
+- ⚡ **Sticky Mobile Quick-Action Bar**: Fixed bottom CTA bar on smartphones (< 768px) featuring direct **"💬 WhatsApp Us"** and **"📍 Directions"** touch buttons for instant customer access.
+- 📐 **Fluid Clamp Typography**: Modern dynamic font scaling (`clamp()`) ensuring perfectly proportioned headings across 320px–4K displays.
+- 👆 **Touch Optimization**: Minimum 44px × 44px tap targets, full-width mobile action buttons, and smooth scroll alignment below sticky navigation.
+
+---
+
 ## 📍 Store Location & Contact Information
 
 Visit our kitchen in Balik Pulau, Penang to taste fresh, piping hot curry puffs straight out of the wok!
