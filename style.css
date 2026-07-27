@@ -3,22 +3,23 @@
    ========================================================================== */
 
 :root {
-  --primary-gold: #E6A100;
-  --primary-gold-bright: #FFC837;
+  --primary-gold: #F0B323;
+  --primary-gold-bright: #FFD56B;
   --amber-glow: #FF7700;
-  --deep-spice-red: #C0392B;
+  --deep-spice-red: #D9381E;
+  --thai-emerald: #143626;
   --rich-chestnut: #2A170F;
-  --dark-bg: #0F0A07;
-  --dark-surface: #18110B;
-  --dark-card: rgba(28, 19, 13, 0.88);
-  --dark-card-border: rgba(230, 161, 0, 0.25);
+  --dark-bg: #0A120D;
+  --dark-surface: #111A14;
+  --dark-card: rgba(18, 28, 21, 0.88);
+  --dark-card-border: rgba(240, 179, 35, 0.3);
   --text-main: #FAF3EF;
-  --text-muted: #BAA99F;
-  --text-gold: #FFD266;
+  --text-muted: #B8C7BC;
+  --text-gold: #FFD56B;
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
-  --shadow-gold: 0 10px 30px rgba(230, 161, 0, 0.2);
+  --shadow-gold: 0 10px 30px rgba(240, 179, 35, 0.25);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -31,7 +32,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+  scroll-padding-top: 110px;
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: var(--dark-bg);
   color: var(--text-main);
@@ -41,13 +42,51 @@ html {
 
 body {
   overflow-x: hidden;
-  background: radial-gradient(circle at 50% 0%, #2A170F 0%, #0F0A07 70%);
+  background: radial-gradient(circle at 50% 0%, #1A2E22 0%, #0F1913 45%, #070D09 100%);
   min-height: 100vh;
   position: relative;
 }
 
 body.menu-open {
   overflow: hidden;
+}
+
+/* Thai Theme Welcome Banner */
+.thai-welcome-bar {
+  background: linear-gradient(135deg, #F0B323 0%, #D4900B 100%);
+  color: #0F0A07;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 0.82rem;
+  text-align: center;
+  padding: 0.45rem 1rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 2px 10px rgba(240, 179, 35, 0.3);
+  position: relative;
+  z-index: 101;
+}
+
+.thai-script-sub {
+  font-size: 1.15rem;
+  color: var(--primary-gold-bright);
+  font-weight: 600;
+  margin-top: 0.35rem;
+  display: block;
+  letter-spacing: 0.5px;
+  opacity: 0.95;
+}
+
+.thai-gold-badge {
+  border: 1px solid rgba(240, 179, 35, 0.45) !important;
+  background: rgba(240, 179, 35, 0.14) !important;
+  box-shadow: 0 0 18px rgba(240, 179, 35, 0.25) !important;
+}
+
+.thai-gold-border {
+  border: 2px solid var(--primary-gold-bright) !important;
+  box-shadow: 0 0 30px rgba(240, 179, 35, 0.35) !important;
 }
 
 /* Utility Containers */
