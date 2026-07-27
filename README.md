@@ -1,6 +1,8 @@
 # 🥟 Nat Home Made Curry Puff @ Balik Pulau
 
-![Nat Home Made Curry Puff Header](assets/hero_potato.png)
+| 📱 Mobile View (Mobile First UX) | 💻 Desktop View |
+| :---: | :---: |
+| <img src="assets/website_mobile.png" width="340" alt="Nat Home Made Curry Puff Mobile View"> | <img src="assets/website_desktop.png" width="600" alt="Nat Home Made Curry Puff Desktop View"> |
 
 Welcome to the official web repository for **Nat Home Made Curry Puff @ Balik Pulau**, an authentic Malaysian culinary brand located in Balik Pulau, Penang.
 
