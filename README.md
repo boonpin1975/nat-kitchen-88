@@ -79,6 +79,12 @@ npm run dev
 
 # Build production bundle
 npm run build
+
+# Start production server (node server.js)
+npm start
+
+# Build and start production server in one command
+npm run start:prod
 ```
 
 ---
