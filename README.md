@@ -83,4 +83,12 @@ npm run build
 
 ---
 
+## 🌐 Domain & Hosting Setup
+
+The Vite development and preview server configuration (`vite.config.js`) is pre-configured to allow custom domain access:
+- **Domains**: `www.natkitchen.shop` / `natkitchen.shop`
+- **Configuration**: `allowedHosts` defined in `vite.config.js` for Vite dev/preview environments.
+
+---
+
 &copy; 2026 Nat Home Made Curry Puff @ Balik Pulau. All rights reserved.
