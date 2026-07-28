@@ -1,0 +1,22 @@
+[Unit]
+Description=Nat Kitchen Web Application Service
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/nat-kitchen-88
+ExecStartPre=/usr/bin/npm run build
+ExecStart=/usr/bin/npx vite preview --host 0.0.0.0 --port 80
+Restart=always
+RestartSec=5s
+Environment=NODE_ENV=production
+
+# Security Hardening Options
+ProtectSystem=full
+PrivateTmp=true
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

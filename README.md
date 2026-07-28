@@ -91,4 +91,28 @@ The Vite development and preview server configuration (`vite.config.js`) is pre-
 
 ---
 
+## 🐧 Linux Systemd Service Setup
+
+A pre-configured Systemd service file [`nat-kitchen.service`](file:///c:/my_project/new/nat-kitchen-88/nat-kitchen.service) is included to run the web server continuously on Linux.
+
+### Installation Steps:
+```bash
+# 1. Copy the service file to systemd directory
+sudo cp nat-kitchen.service /etc/systemd/system/nat-kitchen.service
+
+# 2. Reload systemd daemon to discover the new service
+sudo systemctl daemon-reload
+
+# 3. Enable service to start automatically on system boot
+sudo systemctl enable nat-kitchen
+
+# 4. Start the service immediately
+sudo systemctl start nat-kitchen
+
+# 5. Check service status
+sudo systemctl status nat-kitchen
+```
+
+---
+
 &copy; 2026 Nat Home Made Curry Puff @ Balik Pulau. All rights reserved.
